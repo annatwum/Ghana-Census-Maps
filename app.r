@@ -4,8 +4,9 @@ library(shiny)
     titlePanel("Ghana Census Maps"),
     sidebarLayout(
       sidebarPanel(
-        helpText("View maps with 
-               information from the Ghana 2010 US Census."),
+        h2("About project"),
+        p("Maps were created using IPUMS sample data from Ghana's 2010 census"),
+        p("R code: https://github.com/annatwum"),
         radioButtons("n", label = h4("Available Maps"),
                      choices = list("Electricity access" = 1, "Pipe water access" = 2),
                      selected = 1)
@@ -20,7 +21,7 @@ library(shiny)
   ))
   
   server=shinyServer(function(input, output, session) {
-    # Send a pre-rendered image, and don't delete the image after sending it
+    # Send a  image, and don't delete the image after sending it
     output$Image <- renderImage({
       # When input$n is 3, filename is ./images/image3.jpeg
       filename <- normalizePath(file.path('./www',
